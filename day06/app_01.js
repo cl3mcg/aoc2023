@@ -17,3 +17,32 @@ console.log(arrayOfLines)
 console.log(arrayOfTimes)
 console.log(arrayOfDistances)
 
+const winArray = function (maxTime, distanceRecord) {
+    let result = [];
+    let distance = 0;
+    let speed = 0;
+    for (let pushTime = 0; pushTime < maxTime; pushTime++) {
+        speed = pushTime
+        distance = speed * (maxTime - pushTime)
+        if (distance > distanceRecord) {
+            result.push(pushTime)
+        }
+    }
+    return result
+}
+
+const processOperations = function () {
+    let result = null;
+    if (arrayOfTimes.length === arrayOfDistances.length) {
+        let arrayOfPossibilities = []
+        for (let i = 0; i < arrayOfTimes.length; i++) {
+            let provisionalResults = winArray(arrayOfTimes[i], arrayOfDistances[i])
+            console.log(provisionalResults)
+            arrayOfPossibilities.push(provisionalResults.length)
+        }
+        result = arrayOfPossibilities.reduce((accumulator, currentValue) => { return accumulator * currentValue }, 1)
+    }
+    return result
+}
+
+console.log(processOperations())

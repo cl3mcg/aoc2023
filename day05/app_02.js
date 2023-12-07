@@ -127,4 +127,4 @@ const processAllOperations = function () {
 
 
 const finalResult = processAllOperations()
-console.log(`The final result should be: ${finalResult}`)
+console.log(`The final result should be: ${finalResult} (lowest location number)`)
