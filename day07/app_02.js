@@ -12,7 +12,6 @@ const cardPointsMap = {
     'A': 23,
     'K': 22,
     'Q': 21,
-    'J': 20,
     'T': 19,
     '9': 18,
     '8': 17,
@@ -21,7 +20,8 @@ const cardPointsMap = {
     '5': 14,
     '4': 13,
     '3': 12,
-    '2': 11
+    '2': 11,
+    'J': 10,
 }
 
 const getUniqueValues = function (iterable) {
@@ -54,6 +54,16 @@ const countOccurrences = function (string) {
 
 }
 
+const getJokerIndexes = function (iterable) {
+    // Thanks Chat GPT, fuck it again...
+    return iterable.reduce((indexes, currentValue, currentIndex) => {
+        if (currentValue === 'J') {
+            indexes.push(currentIndex);
+        }
+        return indexes;
+    }, []);
+};
+
 const calculateHandPoints = function (handPassed) {
     if (getUniqueValues(handPassed).length === 1) {
         return 7 // 'Five of a kind'
@@ -80,6 +90,35 @@ const calculateHandPoints = function (handPassed) {
 }
 
 
+const maxOutHand = function (handPassed, handScore, indexesOfJokers, currentIndex = 0, mutatedHand = handPassed.split('')) {
+    if (currentIndex === indexesOfJokers.length) {
+        let mutatedHandPoint = calculateHandPoints(mutatedHand.join(''));
+        let everyMutatedCardPoints = [];
+        for (let card of mutatedHand) {
+            everyMutatedCardPoints.push(cardPointsMap[card]);
+        }
+        let concatPoints = Number(`${mutatedHandPoint}${everyMutatedCardPoints.join('')}`);
+        if (concatPoints > handScore) {
+            return { maxedHand: mutatedHand.join(''), maxedScore: concatPoints };
+        }
+        return { maxedHand: null, maxedScore: handScore };
+    }
+
+    let maxedHand = null;
+    let maxedScore = handScore;
+    let index = indexesOfJokers[currentIndex];
+
+    for (let possibility of Object.keys(cardPointsMap)) {
+        mutatedHand[index] = possibility;
+        let result = maxOutHand(handPassed, handScore, indexesOfJokers, currentIndex + 1, mutatedHand);
+        if (result.maxedScore > maxedScore) {
+            maxedScore = result.maxedScore;
+            maxedHand = result.maxedHand;
+        }
+    }
+    return { maxedHand, maxedScore };
+};
+
 const processHand = function (stringPassed) {
     let handObject = {
         string: null,
@@ -88,16 +127,42 @@ const processHand = function (stringPassed) {
         handPoint: null,
         everyCardPoints: [],
         concatPoints: null,
+        maxHand: null,
+        maxHandPoint: null,
+        maxEveryCardPoints: [],
+        maxConcatPoints: null,
         ranking: null
     };
+
+    // Processing "normal card data"
     handObject.string = stringPassed;
     handObject.hand = stringPassed.split(' ')[0];
+    handObject.maxHand = null;
     handObject.points = Number(stringPassed.split(' ')[1]);
     handObject.handPoint = calculateHandPoints(handObject.hand)
     for (let card of handObject.hand) {
         handObject.everyCardPoints.push(cardPointsMap[card])
     }
     handObject.concatPoints = Number(`${handObject.handPoint}${handObject.everyCardPoints.join('')}`)
+
+
+    // Processing "mutated card data"
+    if (handObject.hand.includes('J')) {
+        const indexesOfJokers = getJokerIndexes(handObject.hand.split(''));
+        const result = maxOutHand(handObject.hand, handObject.concatPoints, indexesOfJokers);
+        handObject.maxHand = result.maxedHand;
+        handObject.maxHandPoint = calculateHandPoints(result.maxedHand);
+        for (let card of result.maxedHand) {
+            handObject.maxEveryCardPoints.push(cardPointsMap[card]);
+        }
+        // handObject.maxConcatPoints = result.maxedScore;
+        handObject.maxConcatPoints = Number(`${handObject.maxHandPoint}${handObject.everyCardPoints.join('')}`)
+    } else {
+        handObject.maxHand = handObject.hand
+        handObject.maxHandPoint = handObject.handPoint
+        handObject.maxEveryCardPoints = handObject.everyCardPoints
+        handObject.maxConcatPoints = handObject.concatPoints
+    }
     return handObject
 };
 
@@ -111,12 +176,10 @@ const getAllHands = function (arrayOfLines) {
     return allHands
 }
 
-// const allHands = getAllHands()
-
 const allHandsProcessed = getAllHands(arrayOfLines)
 
 const processRanking = function (allHandsProcessed) {
-    const rankedHandsArray = allHandsProcessed.sort((a, b) => a.concatPoints - b.concatPoints)
+    const rankedHandsArray = allHandsProcessed.sort((a, b) => a.maxConcatPoints - b.maxConcatPoints)
     for (let hand of rankedHandsArray) {
         hand.ranking = rankedHandsArray.indexOf(hand) + 1
     }
@@ -135,13 +198,18 @@ const getTotalWinnings = function (allHandsRanked) {
 
 // console.log(arrayOfLines);
 // console.log(getAllHands(arrayOfLines))
+// console.log(getAllHands(arrayOfLines)[0])
+// console.log(getAllHands(arrayOfLines)[1])
 // console.log(getAllHands(arrayOfLines)[0].concatPoints())
 // console.log(processRanking(allHandsProcessed)[0])
 // console.log(getUniqueValues('AAA6T'))
 // console.log(processRanking(allHandsProcessed))
+// console.log(processRanking(allHandsProcessed)[0])
 // console.log(processRanking(allHandsProcessed)[1])
 // console.log(processRanking(allHandsProcessed)[2])
 // console.log(processRanking(allHandsProcessed)[3])
+// console.log(processRanking(allHandsProcessed)[4])
 
 // console.log(processRanking(allHandsProcessed))
+
 console.log(`The final result should be: ${getTotalWinnings(allHandsRanked)}`)
