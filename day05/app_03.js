@@ -1,6 +1,6 @@
 // Man... you can't just check the values of 1,031,184,463 of variables processed through 7 layers of transformtation.
 // That will burn the computer and you'll need a dedicated nuclear reactor to process this mess.
-// The process attempted in app_02.js is doo-doo garbage. You need to find another solution.
+// The process attempted in app_02.js is bad. You need to find another solution.
 // Instead, do a reverse search. Consider the location value 0, and process the steps backward.
 // Consider location as step 7 (the last step).
 // Go from location 0, and check if it matches any range provided in step 6 (which is 'humidity').
@@ -11,10 +11,10 @@
 
 
 // Import the Node.js file system
-const fs = require('fs');
+import { readFileSync } from 'fs';
 
 // Use the file system to read the text file and encode it in UTF-8
-const fileContent = fs.readFileSync('input.txt', 'utf8');
+const fileContent = readFileSync('input.txt', 'utf8');
 
 // Create an array using the array.split() method
 // Split is performed using the carriage return as a separator

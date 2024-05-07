@@ -1,0 +1,25 @@
+{
+	"name": "adventofcode2023",
+	"type": "module",
+	"version": "0.0.1",
+	"description": "Centralized location that contains my solutions to the Advent of Code 2023 challenges. Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cl3mcg/aoc2023.git"
+	},
+	"keywords": [
+		"aoc2023",
+		"challenges",
+		"code"
+	],
+	"author": "Clément CHAÏB-GALLI",
+	"license": "CC0-1.0",
+	"bugs": {
+		"url": "https://github.com/cl3mcg/aoc2023/issues"
+	},
+	"homepage": "https://github.com/cl3mcg/aoc2023#readme"
+}
