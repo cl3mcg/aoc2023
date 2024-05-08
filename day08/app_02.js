@@ -1,3 +1,12 @@
+// Note:
+// Yeah... brute force is not going to always work.
+// According to Reddit, you are supposed to check something related to Least Common Multiple (LCM) or something like that.
+// Apparently all the starting points '__A' are looping. At some point they are leading to a '__Z' node,
+// the challenge remains that all the starting '__A' loops are not reaching a '__Z' destination **at the same time** until you reach the solution.
+// So you are supposed to check the number of iteration that are necessary for the starting points '__A' to reach at some point a '__Z'.
+// You would get a array such as loop1 reaches a '__Z' node at iterations [3, 10, 40, 69, 152], same for loop2 etc...
+// Utilimatly, you should get a value that is common to each array... I assume...
+
 // Import the Node.js file system
 import { readFileSync } from 'fs';
 
