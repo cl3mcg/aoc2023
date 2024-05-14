@@ -61,6 +61,11 @@ I'd be happy to show you how to solve this system of equations step by step. Let
 $$
 \begin{align}
 y_1 &= a \cdot b^{x_1} \
+\end{align}
+$$
+
+$$
+\begin{align}
 y_2 &= a \cdot b^{x_2}
 \end{align}
 $$
