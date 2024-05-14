@@ -37,7 +37,7 @@ const countOccurrences = function (string) {
         // check the number of occurence of each unique value in the iterable
         // If four values have the same label
         // return 4 else return 3
-        // Thanks Chat GPT, fuck it...
+        // Thanks Chat GPT:
         const occurrencesMap = iterable.reduce((acc, val) => acc.set(val, (acc.get(val) || 0) + 1), new Map());
         const values = Array.from(occurrencesMap.values());
         return values.includes(4) ? 4 : 3;
@@ -46,7 +46,7 @@ const countOccurrences = function (string) {
         // check the number of occurence of each unique value in the iterable
         // If three values have the same label and one value has a different label
         // return 3 else return 2
-        // Thanks Chat GPT, fuck it...
+        // Thanks Chat GPT:
         const occurrencesMap = iterable.reduce((acc, val) => acc.set(val, (acc.get(val) || 0) + 1), new Map());
         const values = Array.from(occurrencesMap.values());
         return values.includes(3) ? 3 : 2;
