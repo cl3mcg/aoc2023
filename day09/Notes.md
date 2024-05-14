@@ -8,6 +8,7 @@ So I re-read the problem given, and I noticed that the most important part was a
 I decided to do a test on 2 series of numbers and substracted each given number to put the difference between 2 numbers into Excel.
 I then drafted a chart based on the suite of numbers.
 I noticed that the difference between the numbers is always growing, and once the points plotted on a chart, the difference between the numbers clearly appears to be part of an exponential function.
+
 ![Chart 01](chart_01.png)
 ![Chart 02](chart_02.png)
 
