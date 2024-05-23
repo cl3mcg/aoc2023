@@ -2,6 +2,8 @@
 
 ## Mental path to solve Part 1
 
+### First attempt
+
 I beleive we are reaching the boundaries of what i am able to solve with my limited time.
 I tried to kickstart this problem solving with a zest of help from MistralAI and it didn't really help.
 So I re-read the problem given, and I noticed that the most important part was about the differences between the numbers given.
@@ -45,7 +47,7 @@ $$
 And...that's it for me, I can't go further on my own.
 So I prepared a prompt to MistralAI to unstuck me on this one.
 
-## Help from LLM
+#### Help from LLM
 
 I'd be happy to show you how to solve this system of equations step by step. Let's start with the given system of equations:
 
@@ -111,3 +113,29 @@ a = \frac{y_1}{b^{x_1}}
 $$
 
 Now you have the values of a and b for the exponential function `y = a \* b^x`. You can use these values to find the next y value for `x+1` by plugging in the value of `x+1` into the equation and calculating the corresponding `y` value.
+
+## Conclusion
+
+So basically, in order to predict the next number of the serie, I have to consider the expression
+
+$$
+b = e^{\left(\frac{\ln{\left(\frac{y_2}{y_1}\right)}}{(x_2 - x_1)}\right)}
+$$
+
+and the expression
+
+$$
+a = \frac{y_1}{b^{x_1}}
+$$
+
+This will allow me to get the expression of the exponential function `y = a * b^x`.
+
+Once done, I can deduct the value of `y` for `x + 1`.
+
+I just have to consider `y` as the difference between the target value and the last occurence in the serie of numbers.
+
+### Second attempt
+
+Actually, not all the difference between the numbers are resulting in an exponential function... Wrong guess, I was particularly unlucky because I selected only a sample of rows that were actual exponential functions and beleived that all were, which is obviously not the case.
+
+So I will stop this and try to solve the problem the way it is described in the challenge.

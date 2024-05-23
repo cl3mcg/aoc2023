@@ -2,6 +2,8 @@
 
 This repository contains my solutions to the [Advent of Code 2023](https://adventofcode.com/2023) challenges. Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels.
 
+![meme_picture](meme.jpg)
+
 ## Challenges
 
 The challenges are designed to be solved in any programming language and cover a wide range of topics, including:
