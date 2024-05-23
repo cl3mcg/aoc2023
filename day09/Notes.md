@@ -5,11 +5,15 @@
 ### First attempt
 
 I beleive we are reaching the boundaries of what i am able to solve with my limited time.
+
 I tried to kickstart this problem solving with a zest of help from MistralAI and it didn't really help.
+
 So I re-read the problem given, and I noticed that the most important part was about the differences between the numbers given.
+
 I decided to do a test on 2 series of numbers and substracted each given number to put the difference between 2 numbers into Excel.
 I then drafted a chart based on the suite of numbers.
 I noticed that the difference between the numbers is always growing, and once the points plotted on a chart, the difference between the numbers clearly appears to be part of an exponential function.
+
 ![Chart 01](chart_01.png)
 ![Chart 02](chart_02.png)
 
@@ -28,6 +32,11 @@ We need to consider two expressions and divide them, so we can single out a and 
 $$
 \begin{align}
 y_1 &= a \cdot b^{x_1} \
+\end{align}
+$$
+
+$$
+\begin{align}
 y_2 &= a \cdot b^{x_2}
 \end{align}
 $$
@@ -54,6 +63,11 @@ I'd be happy to show you how to solve this system of equations step by step. Let
 $$
 \begin{align}
 y_1 &= a \cdot b^{x_1} \
+\end{align}
+$$
+
+$$
+\begin{align}
 y_2 &= a \cdot b^{x_2}
 \end{align}
 $$
