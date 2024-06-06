@@ -31,4 +31,5 @@ const winFunction = function (maxTime, distanceRecord) {
     return result
 }
 
-console.log(winFunction(time, distance))
+const finalResult = winFunction(time, distance)
+console.log(`The final result should be: ${finalResult}`)

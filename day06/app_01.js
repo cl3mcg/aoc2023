@@ -37,7 +37,7 @@ const processOperations = function () {
         let arrayOfPossibilities = []
         for (let i = 0; i < arrayOfTimes.length; i++) {
             let provisionalResults = winArray(arrayOfTimes[i], arrayOfDistances[i])
-            console.log(provisionalResults)
+            // console.log(provisionalResults)
             arrayOfPossibilities.push(provisionalResults.length)
         }
         result = arrayOfPossibilities.reduce((accumulator, currentValue) => { return accumulator * currentValue }, 1)
@@ -45,4 +45,5 @@ const processOperations = function () {
     return result
 }
 
-console.log(processOperations())
+const finalResult = processOperations();
+console.log(`The final result should be: ${finalResult}`);

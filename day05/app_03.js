@@ -1,5 +1,6 @@
+// **Note to myself in the future:** 
 // Man... you can't just check the values of 1,031,184,463 of variables processed through 7 layers of transformtation.
-// That will burn the computer and you'll need a dedicated nuclear reactor to process this mess.
+// That will burn the computer and you'll need a dedicated nuclear power plant to process this mess.
 // The process attempted in app_02.js is bad. You need to find another solution.
 // Instead, do a reverse search. Consider the location value 0, and process the steps backward.
 // Consider location as step 7 (the last step).
