@@ -24,15 +24,19 @@ Each day of the Advent of Code challenge is organized into its own directory, na
 - `input.txt`: The input data provided by the Advent of Code system for the day's challenge.
 - `test_input.txt`: A sample of the input data for testing purposes.
 
+For the problems that I found **very** challenging, several attemps were necessary, and there might be some additional files containing various attemps, such as `app_03.js` etc.
+
 ### Running the challenges
 
-From my side, I used JavaScript to solve these challenges and from day08, took the opportunity to try [Bun](https://bun.sh/) as a new Javascript runtime.
-You can navigate through the directory and run `bun app_01.js` or `bun app_02.js` (it should also work with `node`) to get the answers of the challenges.
-Note that each participant gets a different dataset to work on, therefore, the answers of my challenges may not be the same as yours.
+From my side, I used JavaScript to solve these challenges and from day08, took the opportunity to try [Bun](https://bun.sh/) as a new Javascript runtime, just for the sake of installing it on my machine and trying something new, even if in this context, nothing leverage the various "selling points" of Bun.
+You can navigate through the directory and run `bun app_01.js` or `bun app_02.js` (it should also work with `node app_01.js` or `node app_02.js` also) to get the answers of the challenges.
+Note that each participant gets a different dataset to work on, therefore, the answers of "my" challenges may not be the same as yours.
 
 ### Disclaimer
 
-Some of these mind twisting challenges remained unsolved unfortunatly...
+Some of these mind twisting challenges remained unsolved unfortunatly, notably the _day03 part02_ and _day05 part02_.
+
+Some of the answers to these challenges are not optimized, meaning that it might be necessary to let the script run for a long time before getting the answer of the challenge. I tried to focus on solving the challenges in the first place, and then, if time allows me, I can spend time in solving the challenges _in a good way_. The objective being to take some pleasure in this experience, I really looked for the "excitement rush" of getting the answers right rather than getting the answers beautifully. The objective is to learn things and to have fun after all.
 
 ## Contact information
 
